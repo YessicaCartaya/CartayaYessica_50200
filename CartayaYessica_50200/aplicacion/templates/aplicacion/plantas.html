@@ -1,0 +1,69 @@
+{% extends 'aplicacion/home.html' %}
+
+{% block titulo %}
+
+    <h1 class="masthead-heading mb-0">Plantas</h1>
+            
+{% endblock titulo %}
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"> <h2>Plantas</h2></td>
+        <td>
+            <a 
+            href="{% url 'plantasCrear' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear" ></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre de la Planta</th>
+                <th>Ambiente de Ubicación</th>
+                <th>Tipo de Riego</th>
+                <th>Iluminación</th>
+                <th>Tamaño de la Planta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    {% for p in plantas %}
+            <tr>
+                <td>{{p.id}}</td>
+                <td>{{p.nombre}}</td>
+                <td>{{p.ambiente}}</td>
+                <td>{{p.riego}}</td>
+                <td>{{p.iluminacion}}</td>
+                <td>{{p.tamaño}}</td>
+                <td>
+                    <a
+                      href="{% url 'plantasActualizar' p.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-paddin-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Actualizar"></i>
+                    </a>
+                    <a
+                      href="{% url 'plantasBorrar' p.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-paddin-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+                    </a>
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock contenido %}
+    
+

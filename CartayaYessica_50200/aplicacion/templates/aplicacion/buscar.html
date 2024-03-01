@@ -1,0 +1,20 @@
+{% extends 'aplicacion/home.html' %}
+
+{% block titulo %}
+
+    <h1 class="masthead-heading mb-0">Buscar Plantas</h1>
+            
+{% endblock titulo %}
+
+{% block contenido %}
+
+<form action="{% url 'buscarPlantas' %}" method="get">
+    {% csrf_token %}
+
+    <p>Patron a buscar: <input type="text" name="buscar" id="buscar"></p>
+    
+    <input type= "submit" value= "Buscar" style="height:35px; width:80px; font-family:'Arial',sans-serif;  border-radius:5px; border:none; color:white; background-color:#ee0979">
+</form>
+    
+{% endblock contenido %}
+

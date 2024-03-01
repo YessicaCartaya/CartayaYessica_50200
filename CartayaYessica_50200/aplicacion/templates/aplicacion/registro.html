@@ -1,0 +1,21 @@
+{% extends 'aplicacion/home.html' %}
+
+{% block titulo %}
+
+    <h1 class="masthead-heading mb-0">Registro de Usuario</h1>
+            
+{% endblock titulo %}
+
+{% block contenido %}
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+    
+    <input type= "submit" value= "Enviar" style="height:35px; width:80px; font-family:'Arial',sans-serif;  border-radius:5px; border:none; color:white; background-color:#ee0979">
+</form>
+    
+{% endblock contenido %}

@@ -1,0 +1,65 @@
+{% extends 'aplicacion/home.html' %}
+
+{% block titulo %}
+
+    <h1 class="masthead-heading mb-0">Plaguicidas</h1>
+            
+{% endblock titulo %}
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"> <h2>Plaguicidas</h2></td>
+        <td>
+            <a 
+            href="{% url 'plaguicidasCrear' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear" ></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Presentación</th>
+                <th>Plagas que Controla</th>
+                <th>Contenido Neto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+
+    {% for pl in plaguicidas %}
+            <tr>
+                <td>{{pl.id}}</td>
+                <td>{{pl.nombre}}</td>
+                <td>{{pl.presentacion}}</td>
+                <td>{{pl.plaga}}</td>
+                <td>{{pl.contenidoNeto}}</td>
+                <td>
+                    <a
+                      href="{% url 'plaguicidasActualizar' pl.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-paddin-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Actualizar"></i>
+                    </a>
+                    <a
+                      href="{% url 'plaguicidasBorrar' pl.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-paddin-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Borrar"></i>
+                    </a>
+                </td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock contenido %}
+    
+
